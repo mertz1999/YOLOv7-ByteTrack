@@ -6,9 +6,9 @@ import copy
 import torch
 import torch.nn.functional as F
 
-from bytetrack.kalman_filter import KalmanFilter
-from bytetrack import matching
-from bytetrack.basetrack import BaseTrack, TrackState
+from byte.kalman_filter import KalmanFilter
+from byte import matching
+from byte.basetrack import BaseTrack, TrackState
 
 class STrack(BaseTrack):
     shared_kalman = KalmanFilter()
