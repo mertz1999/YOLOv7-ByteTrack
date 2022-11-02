@@ -2,7 +2,7 @@
 import torch 
 import cv2
 from yolov7.detect import DetectObjects
-from bytetrack.byte_tracker import BYTETracker
+from byte.byte_tracker import BYTETracker
 
 
 
