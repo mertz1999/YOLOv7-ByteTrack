@@ -49,5 +49,5 @@ with torch.no_grad():
                     online_ids.append(tid)
                     online_scores.append(t.score)
             # save results
-            print(frame_id, online_tlwhs, online_ids, online_scores)
+            print(online_tlwhs, online_ids, online_scores)
 
