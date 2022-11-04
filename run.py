@@ -49,8 +49,8 @@ with torch.no_grad():
                     online_scores.append(t.score)
         
         # Save Traking output as image frame
-        # for idx, row in enumerate(online_tlwhs):
-        #     plot_one_box((row[0],row[1],row[0]+row[2],row[1]+row[3]), frame, label=str(online_ids[idx]), color=yolo.colors[2], line_thickness=1)
+        for idx, row in enumerate(online_tlwhs):
+            plot_one_box((row[0],row[1],row[0]+row[2],row[1]+row[3]), frame, label=str(online_ids[idx]), color=yolo.colors[2], line_thickness=1)
         # cv2.imwrite('./tracker.jpg', frame)
         
         out_vid.write(frame)
