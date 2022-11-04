@@ -51,7 +51,7 @@ with torch.no_grad():
         # Save Traking output as image frame
         for idx, row in enumerate(online_tlwhs):
             plot_one_box(
-                         (row[0]*x_scale, row[1]*y_scale, (row[0]+row[2])*x_scale, (row[1]+row[3])*x_scale),
+                         (row[0]*x_scale, row[1]*y_scale, (row[0]+row[2])*x_scale, (row[1]+row[3])*y_scale),
                          org_frame, label=str(online_ids[idx]), 
                          color=yolo.colors[2], 
                          line_thickness=1
