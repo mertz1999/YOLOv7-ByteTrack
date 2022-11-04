@@ -16,7 +16,7 @@ with torch.no_grad():
     cap = cv2.VideoCapture('1_02.mp4')
 
     # Make instance of yolov7 and trackers
-    yolo = DetectObjects('./yolov7.pt',640,0.25)
+    yolo = DetectObjects('./yolov7.pt',640,0.25, device_name='cuda')
     tracker = BYTETracker(track_thresh = 0.15, track_buffer=30, frame_rate=30, match_thresh=0.6)
 
     while(cap.isOpened()):
