@@ -7,6 +7,9 @@ from byte.byte_tracker import BYTETracker
 from yolov7.utils.plots import plot_one_box
 
 
+# Output Video
+fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')  
+out_vid = cv2.VideoWriter("result_viedeo.mp4", fourcc, 30, (640, 640),True)
 
 with torch.no_grad():
     # Read Video capture
@@ -49,7 +52,8 @@ with torch.no_grad():
         # for idx, row in enumerate(online_tlwhs):
         #     plot_one_box((row[0],row[1],row[0]+row[2],row[1]+row[3]), frame, label=str(online_ids[idx]), color=yolo.colors[2], line_thickness=1)
         # cv2.imwrite('./tracker.jpg', frame)
-
+        
+        out_vid.write(frame)
         # exit()
 
 
