@@ -10,11 +10,11 @@ from yolov7.utils.plots import plot_one_box
 
 with torch.no_grad():
     # Read Video capture
-    cap = cv2.VideoCapture('1_01.mp4')
+    cap = cv2.VideoCapture('1_02.mp4')
 
     # Make instance of yolov7 and trackers
     yolo = DetectObjects('./yolov7.pt',640,0.25)
-    tracker = BYTETracker(track_thresh = 0.7, track_buffer=30, frame_rate=30, match_thresh=0.9)
+    tracker = BYTETracker(track_thresh = 0.15, track_buffer=30, frame_rate=30, match_thresh=0.6)
 
     while(cap.isOpened()):
         # Capture frame-by-frame
@@ -24,15 +24,11 @@ with torch.no_grad():
         # Detections 
         dets = yolo.predict(frame)
 
+        # Save for Detection frame
         # for row in dets[0]:
         #     plot_one_box((row[0],row[1],row[2],row[3]), frame, label=yolo.names[int(row[5])], color=yolo.colors[int(row[5])], line_thickness=1)
-        
-        # cv2.imshow("result",frame)
+        # cv2.imwrite('./detection.jpg', frame)
 
-        #
-        # online_targets = tracker.update(torch.tensor(dets[0]), (640,640), (640,640))
-        # print(online_targets)
-        # print(tracker.update(dets, ))
 
         # run tracking
         if dets[0] is not None:
@@ -48,6 +44,17 @@ with torch.no_grad():
                     online_tlwhs.append(tlwh)
                     online_ids.append(tid)
                     online_scores.append(t.score)
-            # save results
-            print(online_tlwhs, online_ids, online_scores)
+        
+        # Save Traking output as image frame
+        # for idx, row in enumerate(online_tlwhs):
+        #     plot_one_box((row[0],row[1],row[0]+row[2],row[1]+row[3]), frame, label=str(online_ids[idx]), color=yolo.colors[2], line_thickness=1)
+        # cv2.imwrite('./tracker.jpg', frame)
+
+        # exit()
+
+
+
+
+
+
 
