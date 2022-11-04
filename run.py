@@ -19,7 +19,7 @@ with torch.no_grad():
 
     # Output Video
     fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')  
-    out_vid = cv2.VideoWriter("result_viedeo.mp4", fourcc, 30, (x_scale, y_scale),True)
+    out_vid = cv2.VideoWriter("result_viedeo.mp4", fourcc, 30, (width, height),True)
 
     # Make instance of yolov7 and trackers
     yolo = DetectObjects('./yolov7.pt',640,0.25, device_name='cuda')
