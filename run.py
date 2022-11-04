@@ -57,7 +57,7 @@ with torch.no_grad():
                          line_thickness=1
                          )
         
-        out_vid.write(frame)
+        out_vid.write(org_frame)
         # exit()
 
 
